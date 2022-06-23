@@ -20,31 +20,34 @@
         <h2><strong>Populaires</strong></h2>
 
         <!-- CARD -->
-        <ion-card>
-            <ion-card-content>
+        <ion-card *ngFor="let movie of movies">
 
-                <!-- PICTURE -->
+            <!-- PICTURE -->
+            <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
 
+            <div id="card-main">
 
                 <!-- TITLE -->
-                <h4><strong>Fantastic beasts</strong></h4>
+                <h4><strong>{{ movie.original_title }}</strong></h4>
 
                 <!-- INFO -->
                 <ion-row id="card-info">
-                    
+
                     <!-- YEAR -->
-                    <span>2022</span>
+                    <span>{{ movie.release_date.substring(0, 4) }}</span>
 
                     <!-- RATE -->
                     <div>
                         <ion-icon style="color: #000;" name="star-outline"></ion-icon>
 
                         <div id="card-info-rate">
-                            <span>6,9</span>/10
+                            <span>{{ movie.vote_average }}</span>/10
                         </div>
                     </div>
+                    
                 </ion-row>
-            </ion-card-content>
+            </div>
+
         </ion-card>
     </div>
 

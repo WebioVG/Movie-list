@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'actor-details',
     loadChildren: () => import('./actor-details/actor-details.module').then( m => m.ActorDetailsPageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({
