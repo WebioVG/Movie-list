@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>movieDetails</ion-title>
+    <ion-buttons>
+
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title *ngIf="movie.backdrop_path">{{ movie.original_title }}</ion-title>
+
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="movie.backdrop_path">
+  <div style="position: relative;">
+    <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path"></ion-img>
+    <ion-img id="poster-image" *ngIf="movie.backdrop_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
 
+  </div>
+
+  <div id="main-container">
+    <!-- TITLE -->
+    <h1 id="title">{{ movie.original_title }}</h1>
+  
+    <!-- CATEGORIES -->
+    <div id="categories-container">
+      <ion-button>Action</ion-button>
+      <ion-button>Adventure</ion-button>
+      <ion-button>Science Fiction</ion-button>
+    </div>
+  
+    <!-- YEAR AND RATING -->
+    <div id="yearRating-container">
+  
+      <!-- YEAR -->
+      <span>{{ movie.release_date.substring(0, 4) }}</span>
+  
+      <!-- RATE -->
+      <div id="rating-container">
+        <ion-icon style="color: yellow;" name="star"></ion-icon>
+  
+        <span style="color: #000; font-weight: 600;">{{ movie.vote_average }}</span>/10
+      </div>
+  
+    </div>
+
+    <!-- OVERVIEW -->
+    <p>
+      {{ movie.overview }}
+    </p>
+
+  </div>
 </ion-content>
