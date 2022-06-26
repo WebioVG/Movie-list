@@ -18,8 +18,6 @@ export class ActorDetailsPage {
 
   ionViewWillEnter() {
     this.storage.get('selectedActor').then(selectedActorID => {
-      // this.actor = JSON.parse(selectedActorID) 
-      // console.log(typeof selectedActorID);
       
       this.http.get(`https://api.themoviedb.org/3/person/${selectedActorID}?api_key=fc7b957c462178c939f7cdf82141cd58&append_to_response=movie_credits`)
         .subscribe((actor: any) => {
@@ -30,6 +28,10 @@ export class ActorDetailsPage {
         })
       
     })
+  }
+
+  selectMovie = (id) => {
+      this.storage.set('selectedMovie', id)
   }
 
 }

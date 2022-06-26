@@ -15,7 +15,7 @@
 
         <ion-grid>
             <ion-row>
-                <ion-col size="6" [routerLink]="['/movie-details']" *ngFor="let movie of movies" (click)="selectMovie(movie)">
+                <ion-col size="6" [routerLink]="['/movie-details']" *ngFor="let movie of movies" (click)="selectMovie(movie.id)">
                     <ion-card style="margin: 0">
             
                         <!-- PICTURE -->

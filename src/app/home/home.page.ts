@@ -19,8 +19,8 @@ export class HomePage {
 
     ionViewWillEnter() {
 
-        // Empty the storage
         this.storage.create()
+        // Empty the storage
         this.storage.clear()
 
         // This API comes from www.themoviedb.org/
@@ -33,9 +33,8 @@ export class HomePage {
             )
     }
 
-    selectMovie = (movie) => {
-
-        this.storage.set('selectedMovie', JSON.stringify(movie))
+    selectMovie = (id) => {
+        this.storage.set('selectedMovie', JSON.stringify(id))
     }
 
 }
