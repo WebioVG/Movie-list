@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title>Search</ion-title>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input [(ngModel)]="search" (ionInput)="searchFor()" placeholder="Search..."></ion-input>
+
+  <h2 style="font-size: 16px;"><strong>Searching for: {{ search }}</strong></h2>
+
+  <ion-grid>
+    <ion-row>
+        <ion-col size="6" [routerLink]="['/movie-details']" *ngFor="let movie of results" (click)="selectMovie(movie.id)">
+            <ion-card style="margin: 0">
+    
+                <!-- PICTURE -->
+                <ion-img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
+    
+                <!-- CARD -->
+                <div id="card-main" style="font-size: 9px;">
+    
+                    <!-- TITLE -->
+                    <h4 *ngIf="movie.original_title" style="font-size: 10px;"><strong>{{ movie.original_title }}</strong></h4>
+    
+                    <!-- INFO -->
+                    <ion-row id="card-info">
+    
+                        <!-- YEAR -->
+                        <span *ngIf="movie.release_date">{{ movie.release_date.substring(0, 4) }}</span>
+    
+                        <!-- RATE -->
+                        <div>
+                            <ion-icon style="color: yellow;" name="star"></ion-icon>
+    
+                            <div id="card-info-rate">
+                                <span *ngIf="movie.vote_average">{{ movie.vote_average }}</span>/10
+                            </div>
+                        </div>
+    
+                    </ion-row>
+                </div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+</ion-content>

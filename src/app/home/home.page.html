@@ -4,6 +4,8 @@
         <ion-title>
             Movies
         </ion-title>
+
+        <ion-icon [routerLink]="['/search']" style="color: blue;" name="search-outline" slot="end"></ion-icon>
     </ion-toolbar>
 
 </ion-header>
@@ -19,26 +21,26 @@
                     <ion-card style="margin: 0">
             
                         <!-- PICTURE -->
-                        <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
+                        <ion-img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
             
                         <!-- CARD -->
                         <div id="card-main" style="font-size: 9px;">
             
                             <!-- TITLE -->
-                            <h4 style="font-size: 10px;"><strong>{{ movie.original_title }}</strong></h4>
+                            <h4 *ngIf="movie.original_title" style="font-size: 10px;"><strong>{{ movie.original_title }}</strong></h4>
             
                             <!-- INFO -->
                             <ion-row id="card-info">
             
                                 <!-- YEAR -->
-                                <span>{{ movie.release_date.substring(0, 4) }}</span>
+                                <span *ngIf="movie.release_date">{{ movie.release_date.substring(0, 4) }}</span>
             
                                 <!-- RATE -->
                                 <div>
                                     <ion-icon style="color: yellow;" name="star"></ion-icon>
             
                                     <div id="card-info-rate">
-                                        <span>{{ movie.vote_average }}</span>/10
+                                        <span *ngIf="movie.vote_average">{{ movie.vote_average }}</span>/10
                                     </div>
                                 </div>
             
@@ -49,8 +51,6 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-
-        <!-- CARD -->
     </div>
 
 </ion-content>
